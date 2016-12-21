@@ -85,31 +85,32 @@
           %h1
             %span
               %img(src="/images/asymmetrical-floral-design-of-spirals.svg")
-              Contact me
+              Contact
               %img(src="/images/asymmetrical-floral-design-of-spirals.svg")
+
+          %p You can reach me via <a href="mailto:hello@letteringbyhally.com">email</a>, <a href="https://instagram.com/letteringbyhally">instagram</a>, or the contact form below.
 
         .contact-form.panel.panel-default
           .panel-body
-            %form
+            %form(method="POST" action="https://formspree.io/gammons@gmail.com")
+              %input(type="hidden" name="_next" value="//letteringbyhally.com/thanks.html")
+
               .form-group
                 %label Name
-                %input.form-control(placeholder="Name" required)
+                %input.form-control(name="Name" placeholder="Name" required)
 
               .form-group
                 %label Email address
-                %input.form-control(placeholder='your@email.com' required)
+                %input.form-control(name="Email" placeholder='your@email.com' required)
 
               .form-group
                 %label Phone
-                %input.form-control(placeholder='215-123-1234')
+                %input.form-control(name="Phone" placeholder='215-123-1234')
 
               .form-group
                 %label What would you like done?
-                %textarea.form-control(rows=3)
+                %textarea.form-control(name="Request" rows=3)
               %button.btn.btn-lg(type="submit") Submit
-
-
-
 
 .footer
   .container
