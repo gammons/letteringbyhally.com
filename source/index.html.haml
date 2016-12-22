@@ -5,7 +5,7 @@
         .splash-container
           .splash-outer
             .splash
-              %i.flaticon-floral-curves-and-swirls-design
+              %i.flaticon-floral-design-with-horizontal-symmetry
               %h1 Lettering by Hally
               %h2 Custom, hand-printed letters and stationary
 
@@ -22,25 +22,34 @@
               Portfolio
               %img(src="/images/asymmetrical-floral-design-of-spirals.svg")
 
-    .row.portfolio-images
+    #links.row.portfolio-images
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p1.jpg")
+        %a(href="/images/p1.jpg")
+          %img(src="/images/p1.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p2.jpg")
+        %a(href="/images/p2.jpg")
+          %img(src="/images/p2.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p3.jpg")
+        %a(href="/images/p3.jpg")
+          %img(src="/images/p3.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p4.jpg")
+        %a(href="/images/p4.jpg")
+          %img(src="/images/p4.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p5.jpg")
+        %a(href="/images/p5.jpg")
+          %img(src="/images/p5.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p6.jpg")
+        %a(href="/images/p6.jpg")
+          %img(src="/images/p6.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p7.jpg")
+        %a(href="/images/p7.jpg")
+          %img(src="/images/p7.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p8.jpg")
+        %a(href="/images/p8.jpg")
+          %img(src="/images/p8.jpg")
       .col-md-4.col-sm-6.col-xs-12
-        %img(src="/images/p9.jpg")
+        %a(href="/images/p9.jpg")
+          %img(src="/images/p9.jpg")
 
 .services
   .container
@@ -123,4 +132,5 @@
         <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
         Copyright &copy; #{Time.now.year} Hally Ammons
 
+= partial :gallery
 = partial :ga
