@@ -10,7 +10,7 @@
             .splash
               %i.flaticon-floral-design-with-horizontal-symmetry
               %h1 Lettering by Hally
-              %h2 Custom, hand-printed letters and stationary
+              %h2 Calligraphy, Stationery and Custom Hand Lettering
 
   = partial :scrolldown
 
@@ -68,15 +68,15 @@
       .col-md-4.col-sm-6.col-xs-12
         %p
           %i.flaticon-flower-design-1
-          Stationary
+          Stationery
       .col-md-4.col-sm-6.col-xs-12
         %p
           %i.flaticon-one-rose
-          Letterheads
+          Chalkboard Lettering
       .col-md-4.col-sm-6.col-xs-12
         %p
           %i.flaticon-flower-design-2
-          Placecards
+          Place and Escort Cards
       .col-md-4.col-sm-6.col-xs-12
         %p
           %i.flaticon-flower-design-2
@@ -88,7 +88,7 @@
       .col-md-4.col-sm-6.col-xs-12
         %p
           %i.flaticon-flower-on-vines-ornamental-design
-          Other thangs
+          Custom Hand Lettering Projects
 .contact
   .container
     .row
@@ -100,11 +100,11 @@
               Contact
               %img(src="/images/asymmetrical-floral-design-of-spirals.svg")
 
-          %p You can reach me via <a href="mailto:hello@letteringbyhally.com">email</a>, <a href="https://instagram.com/letteringbyhally">instagram</a>, or the contact form below.
+          %p.text-center You can reach me via <a href="mailto:hello@letteringbyhally.com">email</a>, <a target="_blank" href="https://instagram.com/letteringbyhally">instagram</a>, or the contact form below.
 
         .contact-form.panel.panel-default
           .panel-body
-            %form(method="POST" action="https://formspree.io/gammons@gmail.com")
+            %form(method="POST" action="https://formspree.io/hello@letteringbyhally.com")
               %input(type="hidden" name="_next" value="//letteringbyhally.com/thanks.html")
 
               .form-group
@@ -122,16 +122,17 @@
               .form-group
                 %label What would you like done?
                 %textarea.form-control(name="Request" rows=3)
-              %button.btn.btn-lg(type="submit") Submit
+              %button.center-block.btn.btn-lg(type="submit") Submit
 
 .footer
   .container
     .row
       .col-md-12
         .social-icons
-          %i.fa.fa-facebook
-          %i.fa.fa-instagram
-          %i.fa.fa-envelope-o
+          %a(target="_blank" href="instagram.com/letteringbyhally")
+            %i.fa.fa-instagram
+          %a(href="mailto:hello@letteringbyhally.com")
+            %i.fa.fa-envelope-o
         <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
         Copyright &copy; #{Time.now.year} Hally Ammons
 
