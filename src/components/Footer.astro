@@ -1,0 +1,140 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3 class="footer-logo">Lettering by Hally</h3>
+        <p>Modern calligraphy for weddings, events, and keepsakes.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services#invitations">Wedding Invitations</a></li>
+            <li><a href="/services#envelopes">Envelope Addressing</a></li>
+            <li><a href="/services#dayof">Day-Of Signage</a></li>
+            <li><a href="/services#commissions">Custom Commissions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="https://instagram.com/letteringbyhally" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="mailto:hello@letteringbyhally.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Lettering by Hally. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-soft-blush);
+    padding: var(--space-3xl) 0 var(--space-lg);
+    margin-top: var(--space-3xl);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .footer-brand {
+    max-width: 350px;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer-brand p {
+    color: var(--color-ink-black);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .footer-col h4 {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .footer-col ul {
+    list-style: none;
+  }
+
+  .footer-col li {
+    margin-bottom: var(--space-xs);
+  }
+
+  .footer-col a {
+    color: var(--color-ink-black);
+    opacity: 0.8;
+    text-decoration: none;
+    transition: opacity var(--transition-base), color var(--transition-base);
+  }
+
+  .footer-col a:hover {
+    opacity: 1;
+    color: var(--color-gold-accent);
+  }
+
+  .footer-bottom {
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(26, 26, 26, 0.1);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+</style>

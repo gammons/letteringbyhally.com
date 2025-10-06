@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import TestimonialSlider from '../components/TestimonialSlider.astro';
+import { readFileSync } from 'fs';
+import { load } from 'js-yaml';
+
+const services = load(readFileSync('content/services.yml', 'utf8')) as Array<{
+  id: string;
+  name: string;
+  description: string;
+  starts_at?: number;
+  starts_at_each?: number;
+}>;
+
+const portfolio = load(readFileSync('content/portfolio.yml', 'utf8')) as Array<{
+  id: string;
+  image: string;
+  title: string;
+  category: string;
+}>;
+
+const featuredPortfolio = portfolio.slice(0, 4);
+---
+
+<BaseLayout
+  title="Lettering by Hally - Modern Calligraphy for Weddings & Events"
+  description="Hand-crafted invitations, envelopes, and day-of details — thoughtfully designed and delivered on time."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <video autoplay loop muted playsinline class="hero-video">
+        <source src="/letteringByHally.mp4" type="video/mp4">
+      </video>
+      <div class="container">
+        <div class="hero-content">
+          <h1>Modern calligraphy for weddings & meaningful moments</h1>
+          <p class="hero-subtitle">
+            Hand-crafted invitations, envelopes, and day-of details —
+            thoughtfully designed and delivered on time.
+          </p>
+          <div class="hero-actions">
+            <Button href="/contact" variant="primary" size="lg">Request a Quote</Button>
+            <Button href="/portfolio" variant="outline" size="lg">View Portfolio</Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services section">
+      <div class="container">
+        <h2 class="text-center">Services</h2>
+        <div class="services-grid">
+          {services.slice(0, 4).map(service => (
+            <Card>
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              <p class="service-price">
+                From ${service.starts_at || service.starts_at_each}
+                {service.starts_at_each && ' per envelope'}
+              </p>
+              <Button href={`/services#${service.id}`} variant="text">
+                Learn More →
+              </Button>
+            </Card>
+          ))}
+        </div>
+        <div class="text-center" style="margin-top: var(--space-xl);">
+          <Button href="/services" variant="outline">View All Services</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Portfolio -->
+    <section class="featured-portfolio section">
+      <div class="container">
+        <h2 class="text-center">Recent Work</h2>
+        <div class="portfolio-carousel">
+          {featuredPortfolio.map(item => (
+            <div class="portfolio-slide">
+              <img src={item.image} alt={item.title} loading="lazy" />
+              <h3>{item.title}</h3>
+            </div>
+          ))}
+        </div>
+        <div class="text-center" style="margin-top: var(--space-xl);">
+          <Button href="/portfolio" variant="outline">View Full Portfolio</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process section" style="background-color: var(--color-soft-blush);">
+      <div class="container">
+        <h2 class="text-center">The Process</h2>
+        <p class="text-center" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
+          Every project begins with your story. We confirm details, explore materials,
+          provide proofs, and deliver carefully packaged finished work.
+        </p>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Discovery</h3>
+            <p>We discuss your vision, timeline, and style preferences.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Design</h3>
+            <p>I create custom pieces with your aesthetic in mind.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Proofs</h3>
+            <p>Review and approve samples before final production.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Delivery</h3>
+            <p>Receive your beautifully packaged calligraphy on time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <TestimonialSlider />
+
+    <!-- Contact CTA -->
+    <section class="cta section">
+      <div class="container text-center">
+        <h2>Ready to bring your vision to life?</h2>
+        <p style="max-width: 600px; margin: 0 auto var(--space-lg);">
+          Let's create something beautiful together. Share your details and I'll be in touch within 24 hours.
+        </p>
+        <Button href="/contact" variant="primary" size="lg">Get Started</Button>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-3xl) 0;
+    margin-top: var(--header-height);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.85);
+    padding: var(--space-2xl);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero h1 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+    opacity: 0.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  .service-price {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    color: var(--color-gold-accent);
+    margin-top: var(--space-md);
+  }
+
+  /* Portfolio Carousel */
+  .portfolio-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  .portfolio-slide img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    margin-bottom: var(--space-sm);
+  }
+
+  .portfolio-slide h3 {
+    font-size: 1.125rem;
+    text-align: center;
+  }
+
+  /* Process */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--color-gold-accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 auto var(--space-md);
+  }
+
+  .step h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .step p {
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: var(--space-2xl) 0;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+</style>

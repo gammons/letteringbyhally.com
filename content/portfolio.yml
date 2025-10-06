@@ -1,0 +1,62 @@
+- id: p1
+  image: /images/p1.jpg
+  title: Romantic Wedding Suite
+  category: invitations
+  materials: Ink on handmade paper
+  description: Custom invitation suite with delicate flourishes
+
+- id: p2
+  image: /images/p2.jpg
+  title: Elegant Envelope Addressing
+  category: envelopes
+  materials: Black ink on ivory envelopes
+  description: Classic calligraphy for a formal wedding
+
+- id: p3
+  image: /images/p3.jpg
+  title: Garden Wedding Signage
+  category: dayof
+  materials: Gold ink on acrylic
+  description: Welcome sign and seating chart
+
+- id: p4
+  image: /images/p4.jpg
+  title: Modern Minimalist Suite
+  category: invitations
+  materials: Black ink on cotton paper
+  description: Clean lines with contemporary elegance
+
+- id: p5
+  image: /images/p5.jpg
+  title: Place Card Collection
+  category: dayof
+  materials: Navy ink on cream cardstock
+  description: Hand-lettered place cards for 150 guests
+
+- id: p6
+  image: /images/p6.jpg
+  title: Vintage Inspired Envelopes
+  category: envelopes
+  materials: Sepia ink on kraft envelopes
+  description: Rustic charm with refined lettering
+
+- id: p7
+  image: /images/p7.jpg
+  title: Custom Vow Art
+  category: commissions
+  materials: Gold leaf on archival paper
+  description: Heirloom piece for anniversary gift
+
+- id: p8
+  image: /images/p8.jpg
+  title: Luxury Brand Event
+  category: events
+  materials: White ink on black paper
+  description: On-site calligraphy for brand activation
+
+- id: p9
+  image: /images/p9.jpg
+  title: Timeless Wedding Suite
+  category: invitations
+  materials: Burgundy ink on textured linen
+  description: Classic elegance for a vineyard wedding

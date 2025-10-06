@@ -1,0 +1,296 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+
+const packages = [
+  {
+    name: 'Essentials',
+    price: 1500,
+    description: 'Perfect for intimate gatherings',
+    includes: [
+      'Up to 50 envelope addresses',
+      'Simple invitation suite calligraphy',
+      'Two proof rounds',
+      'Standard shipping included'
+    ]
+  },
+  {
+    name: 'Complete',
+    price: 2500,
+    description: 'Most popular for medium weddings',
+    includes: [
+      'Up to 100 envelope addresses',
+      'Full invitation suite calligraphy',
+      'Welcome sign or seating chart',
+      '30 place cards',
+      'Three proof rounds',
+      'Priority shipping included'
+    ],
+    featured: true
+  },
+  {
+    name: 'Premium',
+    price: 3500,
+    description: 'Comprehensive coverage for large events',
+    includes: [
+      'Up to 200 envelope addresses',
+      'Luxury invitation suite calligraphy',
+      'Multiple signage pieces',
+      'Up to 100 place cards',
+      'Menu cards (up to 100)',
+      'Unlimited proof rounds',
+      'White glove delivery coordination'
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Pricing - Lettering by Hally"
+  description="Transparent pricing for wedding calligraphy services. Packages starting at $1,500."
+>
+  <Header />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Pricing</h1>
+        <p class="lead">
+          Transparent pricing designed to fit your needs and budget.
+        </p>
+      </div>
+    </section>
+
+    <section class="packages section">
+      <div class="container">
+        <div class="packages-grid">
+          {packages.map(pkg => (
+            <Card class={pkg.featured ? 'package-card featured' : 'package-card'}>
+              {pkg.featured && <span class="badge">Most Popular</span>}
+              <h3>{pkg.name}</h3>
+              <div class="package-price">
+                <span class="price">${pkg.price.toLocaleString()}</span>
+              </div>
+              <p class="package-description">{pkg.description}</p>
+              <ul class="package-includes">
+                {pkg.includes.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <Button href="/contact" variant={pkg.featured ? 'primary' : 'outline'}>
+                Get Started
+              </Button>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-details section-sm" style="background-color: var(--color-soft-blush);">
+      <div class="container">
+        <div class="pricing-info">
+          <div class="info-block">
+            <h3>À La Carte Services</h3>
+            <ul class="price-list">
+              <li>
+                <span>Envelope Addressing</span>
+                <span>$2.50+ per envelope</span>
+              </li>
+              <li>
+                <span>Place Cards</span>
+                <span>$1.50+ each</span>
+              </li>
+              <li>
+                <span>Menu Cards</span>
+                <span>$3+ each</span>
+              </li>
+              <li>
+                <span>Welcome Signs</span>
+                <span>$150+</span>
+              </li>
+              <li>
+                <span>Seating Charts</span>
+                <span>$200+</span>
+              </li>
+              <li>
+                <span>Custom Commissions</span>
+                <span>$95+</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-block">
+            <h3>Important Notes</h3>
+            <ul class="notes-list">
+              <li><strong>Rush Fees:</strong> 20-40% surcharge for projects under 4 weeks</li>
+              <li><strong>Deposit:</strong> 50% due at booking to secure your date</li>
+              <li><strong>Timeline:</strong> Book 6-12 weeks in advance for weddings</li>
+              <li><strong>Shipping:</strong> Insured shipping available nationwide</li>
+              <li><strong>Materials:</strong> Premium paper and archival inks included</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta section">
+      <div class="container text-center">
+        <h2>Ready to get started?</h2>
+        <p style="max-width: 600px; margin: 0 auto var(--space-lg);">
+          Share your project details and I'll provide a custom quote within 24 hours.
+        </p>
+        <Button href="/contact" variant="primary" size="lg">Request a Quote</Button>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background-color: var(--color-soft-blush);
+  }
+
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  .package-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .package-card.featured {
+    border: 2px solid var(--color-gold-accent);
+    transform: scale(1.02);
+  }
+
+  .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-gold-accent);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .package-price {
+    margin: var(--space-lg) 0;
+  }
+
+  .price {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--color-gold-accent);
+  }
+
+  .package-description {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: var(--space-lg);
+  }
+
+  .package-includes {
+    list-style: none;
+    text-align: left;
+    margin-bottom: var(--space-lg);
+  }
+
+  .package-includes li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: var(--space-xs);
+  }
+
+  .package-includes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-gold-accent);
+    font-weight: bold;
+  }
+
+  .pricing-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .info-block h3 {
+    margin-bottom: var(--space-md);
+  }
+
+  .price-list {
+    list-style: none;
+  }
+
+  .price-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  }
+
+  .price-list li:last-child {
+    border-bottom: none;
+  }
+
+  .price-list span:last-child {
+    font-weight: 600;
+    color: var(--color-gold-accent);
+  }
+
+  .notes-list {
+    list-style: none;
+  }
+
+  .notes-list li {
+    margin-bottom: var(--space-sm);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .notes-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-gold-accent);
+  }
+
+  @media (max-width: 768px) {
+    .packages-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .package-card.featured {
+      transform: scale(1);
+    }
+  }
+</style>

@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import { readFileSync } from 'fs';
+import { load } from 'js-yaml';
+
+const faqs = load(readFileSync('content/faq.yml', 'utf8')) as Array<{
+  q: string;
+  a: string;
+}>;
+---
+
+<BaseLayout
+  title="FAQ - Lettering by Hally"
+  description="Frequently asked questions about wedding calligraphy services, timelines, pricing, and more."
+>
+  <Header />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p class="lead">
+          Everything you need to know about working with Lettering by Hally.
+        </p>
+      </div>
+    </section>
+
+    <section class="faq-content section">
+      <div class="container">
+        <div class="faq-list">
+          {faqs.map((faq, index) => (
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false" data-index={index}>
+                <h3>{faq.q}</h3>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer" data-index={index}>
+                <p>{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta section" style="background-color: var(--color-soft-blush);">
+      <div class="container text-center">
+        <h2>Still have questions?</h2>
+        <p style="max-width: 600px; margin: 0 auto var(--space-lg);">
+          I'm happy to answer any questions about your specific project or timeline.
+        </p>
+        <Button href="/contact" variant="primary" size="lg">Get in Touch</Button>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background-color: var(--color-soft-blush);
+  }
+
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-sage-grey);
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+    background: none;
+    border: none;
+    padding: var(--space-lg) 0;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition-base);
+  }
+
+  .faq-question:hover {
+    color: var(--color-gold-accent);
+  }
+
+  .faq-question h3 {
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  .faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-gold-accent);
+    transition: transform var(--transition-base);
+    flex-shrink: 0;
+  }
+
+  .faq-question[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow);
+  }
+
+  .faq-answer.active {
+    max-height: 500px;
+  }
+
+  .faq-answer p {
+    padding-bottom: var(--space-lg);
+    opacity: 0.9;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .faq-question h3 {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const faqQuestions = document.querySelectorAll<HTMLButtonElement>('.faq-question');
+
+  faqQuestions.forEach((question) => {
+    question.addEventListener('click', () => {
+      const isExpanded = question.getAttribute('aria-expanded') === 'true';
+      const index = question.dataset.index;
+      const answer = document.querySelector(`.faq-answer[data-index="${index}"]`);
+
+      // Close all other FAQs
+      faqQuestions.forEach((q) => {
+        q.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.faq-answer').forEach((a) => {
+        a.classList.remove('active');
+      });
+
+      // Toggle current FAQ
+      if (!isExpanded) {
+        question.setAttribute('aria-expanded', 'true');
+        answer?.classList.add('active');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,192 @@
+---
+import { readFileSync } from 'fs';
+import { load } from 'js-yaml';
+
+const testimonials = load(readFileSync('content/testimonials.yml', 'utf8')) as Array<{
+  author: string;
+  text: string;
+  role: string;
+}>;
+---
+
+<section class="testimonials">
+  <div class="container">
+    <h2 class="text-center">What Clients Say</h2>
+
+    <div class="testimonial-slider">
+      {testimonials.map((testimonial, index) => (
+        <div class="testimonial" data-index={index}>
+          <blockquote>
+            <p>"{testimonial.text}"</p>
+            <footer>
+              <cite>{testimonial.author}</cite>
+              <span>{testimonial.role}</span>
+            </footer>
+          </blockquote>
+        </div>
+      ))}
+    </div>
+
+    <div class="slider-controls">
+      <button class="slider-btn" data-dir="prev" aria-label="Previous testimonial">
+        ←
+      </button>
+      <div class="slider-dots">
+        {testimonials.map((_, index) => (
+          <button
+            class="slider-dot"
+            data-index={index}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
+      </div>
+      <button class="slider-btn" data-dir="next" aria-label="Next testimonial">
+        →
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: var(--space-3xl) 0;
+    background-color: var(--color-soft-blush);
+  }
+
+  .testimonials h2 {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .testimonial-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto var(--space-lg);
+    min-height: 200px;
+  }
+
+  .testimonial {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity var(--transition-base);
+  }
+
+  .testimonial.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+  }
+
+  blockquote {
+    text-align: center;
+  }
+
+  blockquote p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: var(--space-md);
+  }
+
+  blockquote footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  cite {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  blockquote span {
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  .slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .slider-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-ink-black);
+    padding: var(--space-xs);
+    transition: color var(--transition-base);
+  }
+
+  .slider-btn:hover {
+    color: var(--color-gold-accent);
+  }
+
+  .slider-dots {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-sage-grey);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-base);
+  }
+
+  .slider-dot.active {
+    background-color: var(--color-gold-accent);
+  }
+</style>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.testimonial');
+  const dots = document.querySelectorAll('.slider-dot');
+  const prevBtn = document.querySelector('[data-dir="prev"]');
+  const nextBtn = document.querySelector('[data-dir="next"]');
+
+  function showSlide(index: number) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentSlide = index;
+  }
+
+  prevBtn?.addEventListener('click', () => {
+    const newIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+    showSlide(newIndex);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    const newIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+    showSlide(newIndex);
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+  });
+
+  // Initialize
+  showSlide(0);
+
+  // Auto-advance
+  setInterval(() => {
+    const newIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+    showSlide(newIndex);
+  }, 5000);
+</script>

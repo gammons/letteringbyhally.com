@@ -1,0 +1,47 @@
+- id: invitations
+  name: Wedding Invitation Calligraphy
+  description: Set the tone from the very first envelope.
+  starts_at: 800
+  includes:
+    - Headers & names
+    - Spot calligraphy
+    - Two proof rounds
+
+- id: envelopes
+  name: Envelope Addressing
+  description: Consistent, legible, and beautiful — at scale.
+  starts_at_each: 2.5
+  includes:
+    - Guest addressing
+    - Return addressing available
+    - Premium paper options
+
+- id: dayof
+  name: Day-Of Signage & Place Cards
+  description: Place cards, menus, and seating charts that bring the room together.
+  starts_at: 150
+  includes:
+    - Welcome signs
+    - Place cards
+    - Menu cards
+    - Seating charts
+
+- id: commissions
+  name: Custom Commissions & Gifts
+  description: Keepsake quotes and heirloom gifts, written by hand.
+  starts_at: 95
+  includes:
+    - Custom quotes
+    - Heirloom pieces
+    - Gift items
+    - Framing available
+
+- id: events
+  name: On-Site Brand Events
+  description: Live calligraphy for brand activations and corporate events.
+  starts_at: 500
+  pricing_type: day_rate
+  includes:
+    - On-site presence
+    - Custom materials
+    - Brand integration

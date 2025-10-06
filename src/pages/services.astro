@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import { readFileSync } from 'fs';
+import { load } from 'js-yaml';
+
+const services = load(readFileSync('content/services.yml', 'utf8')) as Array<{
+  id: string;
+  name: string;
+  description: string;
+  starts_at?: number;
+  starts_at_each?: number;
+  pricing_type?: string;
+  includes: string[];
+}>;
+---
+
+<BaseLayout
+  title="Services - Lettering by Hally"
+  description="Wedding calligraphy services including invitations, envelope addressing, day-of signage, and custom commissions."
+>
+  <Header />
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Services</h1>
+        <p class="lead">
+          Elegant calligraphy services for weddings, events, and special occasions.
+        </p>
+      </div>
+    </section>
+
+    <section class="services-detail section">
+      <div class="container">
+        {services.map(service => (
+          <article class="service-block" id={service.id}>
+            <div class="service-header">
+              <div>
+                <h2>{service.name}</h2>
+                <p class="service-description">{service.description}</p>
+              </div>
+              <div class="service-price">
+                {service.pricing_type === 'day_rate' ? (
+                  <span class="price">From ${service.starts_at} / day</span>
+                ) : service.starts_at_each ? (
+                  <span class="price">From ${service.starts_at_each} per envelope</span>
+                ) : (
+                  <span class="price">From ${service.starts_at}</span>
+                )}
+              </div>
+            </div>
+
+            <div class="service-includes">
+              <h3>Includes:</h3>
+              <ul>
+                {service.includes.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <Button href="/contact" variant="primary">Request a Quote</Button>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta section" style="background-color: var(--color-soft-blush);">
+      <div class="container text-center">
+        <h2>Not sure which service you need?</h2>
+        <p style="max-width: 600px; margin: 0 auto var(--space-lg);">
+          Let's chat about your project and find the perfect solution for your event.
+        </p>
+        <Button href="/contact" variant="primary" size="lg">Get in Touch</Button>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    background-color: var(--color-soft-blush);
+  }
+
+  .page-hero h1 {
+    margin-bottom: var(--space-md);
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .service-block {
+    padding: var(--space-2xl) 0;
+    border-bottom: 1px solid var(--color-sage-grey);
+  }
+
+  .service-block:last-child {
+    border-bottom: none;
+  }
+
+  .service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  .service-description {
+    font-size: 1.125rem;
+    opacity: 0.9;
+  }
+
+  .service-price {
+    text-align: right;
+  }
+
+  .price {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-gold-accent);
+    white-space: nowrap;
+  }
+
+  .service-includes h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-includes ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-lg);
+  }
+
+  .service-includes li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: var(--space-xs);
+  }
+
+  .service-includes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-gold-accent);
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .service-header {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .service-price {
+      text-align: left;
+    }
+  }
+</style>
