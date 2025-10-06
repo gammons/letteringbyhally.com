@@ -10,7 +10,7 @@
 - id: envelopes
   name: Envelope Addressing
   description: Consistent, legible, and beautiful — at scale.
-  starts_at_each: 2.5
+  starts_at_each: 3
   includes:
     - Guest addressing
     - Return addressing available
