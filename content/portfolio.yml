@@ -1,86 +1,9 @@
-- id: p1
-  image: /images/p1.jpg
-  title: Holiday Greeting Card
-  category: holiday
-  materials: White ink on red cardstock
-  description: Festive "joyeux noel" lettering with kraft envelope
-
-- id: p2
-  image: /images/p2.jpg
-  title: Holiday Gift Tags
-  category: holiday
-  materials: White ink on kraft paper tags
-  description: Hand-lettered gift tags for family and friends
-
-- id: p3
-  image: /images/p3.jpg
-  title: Winter Greeting Card
-  category: holiday
-  materials: White ink on kraft envelope with paint splatter
-  description: Whimsical "merry & bright" with snow effect
-
-- id: p4
-  image: /images/p4.jpg
-  title: Christmas Card Calligraphy
-  category: holiday
-  materials: White ink on red cardstock with paint splatter
-  description: Elegant "Merry Christmas" with festive snow details
-
-- id: p5
-  image: /images/p5.jpg
-  title: Flourished Script Practice
-  category: holiday
-  materials: Black ink on dotted paper
-  description: Expressive calligraphy with botanical flourishes
-
-- id: p6
-  image: /images/p6.jpg
-  title: You Are My Sunshine Print
-  category: commissions
-  materials: Black ink on white paper
-  description: Framed brush lettering for nursery or home decor
-
-- id: p8
-  image: /images/p8.jpg
-  title: Menu Card Lettering
+- id: p15
+  image: /images/p15.jpg
+  title: Thank You Card Collection
   category: events
-  materials: Black ink on white cardstock
-  description: Simple and elegant menu cards for special event
-
-- id: p9
-  image: /images/p9.jpg
-  title: Vintage Map Art
-  category: commissions
-  materials: Black ink on vintage French map
-  description: Custom "bonjour" lettering on antique map of France
-
-- id: p10
-  image: /images/p10.jpg
-  title: Calligraphy Style Exemplar
-  category: commissions
-  materials: Burgundy ink on white paper
-  description: Practice sheet showcasing multiple pointed pen styles
-
-- id: p11
-  image: /images/p11.jpg
-  title: Flowing Copperplate Script
-  category: commissions
-  materials: Rust-red ink on white paper
-  description: Detail of elegant pointed pen calligraphy with graceful flourishes
-
-- id: p12
-  image: /images/p12.jpg
-  title: Holiday Place Cards
-  category: events
-  materials: Gold ink on black cardstock
-  description: Elegant place cards for Thanksgiving celebration
-
-- id: p13
-  image: /images/p13.jpg
-  title: Anniversary Celebration Invitation
-  category: invitations
-  materials: Black ink on grey textured paper
-  description: Custom invitation for 16th anniversary celebration
+  materials: Black ink on cream cardstock
+  description: Elegant thank you cards for wedding guests and special occasions
 
 - id: p14
   image: /images/p14.jpg
@@ -89,9 +12,86 @@
   materials: Black ink on kraft paper tags
   description: Hand-lettered name tags for wedding guests
 
-- id: p15
-  image: /images/p15.jpg
-  title: Thank You Card Collection
+- id: p13
+  image: /images/p13.jpg
+  title: Anniversary Celebration Invitation
   category: events
-  materials: Black ink on cream cardstock
-  description: Elegant thank you cards for wedding guests and special occasions
+  materials: Black ink on grey textured paper
+  description: Custom invitation for 16th anniversary celebration
+
+- id: p12
+  image: /images/p12.jpg
+  title: Holiday Place Cards
+  category: events
+  materials: Gold ink on black cardstock
+  description: Elegant place cards for Thanksgiving celebration
+
+- id: p11
+  image: /images/p11.jpg
+  title: Flowing Copperplate Script
+  category: commissions
+  materials: Rust-red ink on white paper
+  description: Detail of elegant pointed pen calligraphy with graceful flourishes
+
+- id: p10
+  image: /images/p10.jpg
+  title: Calligraphy Style Exemplar
+  category: commissions
+  materials: Burgundy ink on white paper
+  description: Practice sheet showcasing multiple pointed pen styles
+
+- id: p9
+  image: /images/p9.jpg
+  title: Vintage Map Art
+  category: commissions
+  materials: Black ink on vintage French map
+  description: Custom "bonjour" lettering on antique map of France
+
+- id: p8
+  image: /images/p8.jpg
+  title: Menu Card Lettering
+  category: events
+  materials: Black ink on white cardstock
+  description: Simple and elegant menu cards for special event
+
+- id: p6
+  image: /images/p6.jpg
+  title: You Are My Sunshine Print
+  category: commissions
+  materials: Black ink on white paper
+  description: Framed brush lettering for nursery or home decor
+
+- id: p5
+  image: /images/p5.jpg
+  title: Flourished Script Practice
+  category: holiday
+  materials: Black ink on dotted paper
+  description: Expressive calligraphy with botanical flourishes
+
+- id: p4
+  image: /images/p4.jpg
+  title: Christmas Card Calligraphy
+  category: holiday
+  materials: White ink on red cardstock with paint splatter
+  description: Elegant "Merry Christmas" with festive snow details
+
+- id: p3
+  image: /images/p3.jpg
+  title: Winter Greeting Card
+  category: holiday
+  materials: White ink on kraft envelope with paint splatter
+  description: Whimsical "merry & bright" with snow effect
+
+- id: p2
+  image: /images/p2.jpg
+  title: Holiday Gift Tags
+  category: holiday
+  materials: White ink on kraft paper tags
+  description: Hand-lettered gift tags for family and friends
+
+- id: p1
+  image: /images/p1.jpg
+  title: Holiday Greeting Card
+  category: holiday
+  materials: White ink on red cardstock
+  description: Festive "joyeux noel" lettering with kraft envelope
